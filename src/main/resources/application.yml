@@ -1,6 +1,6 @@
 Spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/TodoList
+    url: jdbc:postgresql://localhost:5432/TodoList
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -8,7 +8,7 @@ Spring:
     database: postgresql
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true

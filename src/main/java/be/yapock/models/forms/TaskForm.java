@@ -7,7 +7,7 @@ import lombok.Data;
 public class TaskForm {
     private String title;
     private String description;
-    private boolean isFinished;
+    private boolean isFinished = false;
 
     public static TaskForm fromEntity(Task task){
         TaskForm taskForm = new TaskForm();

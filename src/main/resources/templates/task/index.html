@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Acceuil</title>
+    <title>acceuil</title>
 </head>
 <body>
     <h1>Bienvenue</h1>
-    <a href="/tasks/index">Todo</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Terminée?</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${tasklist}">
+                <td th:text="${task.id}"/>
+                <td th:text="${task.title}"/>
+                <td th:text="${task.finished}"/>
+                <td>
+                    <a th:href="@{/task/finished/{id}(id = ${task.id})}">Finie</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/task/create">Ajouter une tache</a>
 </body>
 </html>

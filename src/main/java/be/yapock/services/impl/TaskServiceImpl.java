@@ -44,4 +44,11 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.delete(existingTask);
         return existingTask;
     }
+
+    @Override
+    public Task upDateFinishedStatus(Long id) {
+        Task existingTask = getOne(id);
+        existingTask.setFinished(true);
+        return taskRepository.save(existingTask);
+    }
 }

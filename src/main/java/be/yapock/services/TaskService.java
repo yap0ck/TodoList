@@ -11,4 +11,6 @@ public interface TaskService {
     Task upDate(Long id, Task task);
     Task delete(Long id);
 
+    Task upDateFinishedStatus(Long id);
+
 }
