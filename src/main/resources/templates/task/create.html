@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajout d'une Tache</title>
+    <link rel="stylesheet" href="/CSS/taskStyle.css">
 </head>
 <body>
-    <h1>Ajout d'une Tache</h1>
+    <div class="banner">
+        <h1>Ajout d'une Tache</h1>
+    </div>
     <form th:object="${task}" th:action="@{/task/create}" method="post">
-        <label>Titre : <input type="text" th:field="*{title}"/></label>
-        <label>Description : <input type="text" th:field="*{description}"/></label>
-        <button type="submit">Ajouter</button>
+        <div class="group">
+            <input type="text" th:field="*{title}" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Titre</label>
+        </div>
+        <div class="group">
+            <input type="text" th:field="*{description}" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Description</label>
+        </div>
+        <div id="conteneurBtn">
+            <button type="submit" class="custom-btn" id="submit">Ajouter</button>
+        </div>
     </form>
+
 </body>
 </html>

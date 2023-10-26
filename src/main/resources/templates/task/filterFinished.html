@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>taches terminées</title>
+    <link rel="stylesheet" href="/CSS/taskStyle.css">
 </head>
 <body>
-    <table>
+    <div class="banner">
+        <h1>Tâches terminées</h1>
+    </div>
+    <table class="table zebre">
         <thead>
             <tr>
                 <th>Id</th>
@@ -15,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="task : ${taskFinishedList}">
+            <tr th:each="task : ${taskFinishedList}" class="finished">
                 <td th:text="${task.id}"/>
                 <td th:text="${task.title}"/>
                 <td th:text="${task.finished}"/>
@@ -25,8 +29,10 @@
             </tr>
         </tbody>
     </table>
-    <a th:href="@{/task}">retour</a>
-    <a th:href="@{/task/filterUnfinished}">Afficher les tâches non terminées</a>
-    <a th:href="@{/task/deleteAllFinished}">Effacer les tâches supprimées</a>
+    <div class="menu">
+        <a th:href="@{/task}" class="custom-btn">Afficher toute les taches</a>
+        <a th:href="@{/task/filterUnfinished}" class="custom-btn">Afficher les tâches non terminées</a>
+        <a th:href="@{/task/deleteAllFinished}" class="custom-btn">Effacer les tâches supprimées</a>
+    </div>
 </body>
 </html>
