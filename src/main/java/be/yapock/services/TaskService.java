@@ -15,4 +15,5 @@ public interface TaskService {
 
     List<Task> getAllUnfinished();
     List<Task> getAllFinished();
+    List<Task> deleteAllFinished();
 }

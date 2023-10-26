@@ -3,6 +3,7 @@ package be.yapock.services.impl;
 import be.yapock.models.entities.Task;
 import be.yapock.repositories.TaskRepository;
 import be.yapock.services.TaskService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -63,5 +64,11 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> getAllFinished() {
         return taskRepository.findByIsFinishedTrue();
+    }
+
+    @Override
+    @Transactional
+    public List<Task> deleteAllFinished() {
+        return taskRepository.deleteTaskByIsFinishedTrue();
     }
 }

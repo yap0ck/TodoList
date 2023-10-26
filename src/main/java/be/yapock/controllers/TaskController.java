@@ -66,4 +66,10 @@ public class TaskController {
         model.addAttribute("taskFinishedList", dtoList);
         return "task/filterFinished";
     }
+
+    @GetMapping("/deleteAllFinished")
+    public String deleteAllFinished(){
+        taskService.deleteAllFinished();
+        return "redirect:/task";
+    }
 }
