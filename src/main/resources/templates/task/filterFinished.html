@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Taches non finies</title>
+    <title>taches terminées</title>
 </head>
 <body>
     <table>
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="task : ${taskUnfinishedList}">
+            <tr th:each="task : ${taskFinishedList}">
                 <td th:text="${task.id}"/>
                 <td th:text="${task.title}"/>
                 <td th:text="${task.finished}"/>
@@ -25,7 +25,7 @@
             </tr>
         </tbody>
     </table>
-    <a th:href="@{/task}">Afficher toutes les taches</a>
-    <a th:href="@{/task/filterFinished}">Afficher les tâches terminées</a>
+    <a th:href="@{/task}">retour</a>
+    <a th:href="@{/task/filterUnfinished}">Afficher les tâches non terminées</a>
 </body>
 </html>

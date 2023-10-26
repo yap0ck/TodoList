@@ -48,12 +48,22 @@ public class TaskController {
     }
 
     @GetMapping("/filterUnfinished")
-    public String findAllFinished(Model model){
-        List<Task> taskList = taskService.getAllFinished();
+    public String findAllUnfinished(Model model){
+        List<Task> taskList = taskService.getAllUnfinished();
         List<TaskShortDTO> dtoList = taskList.stream()
                 .map(TaskShortDTO::fromEntity)
                 .toList();
         model.addAttribute("taskUnfinishedList", dtoList);
         return "task/filterUnfinished";
+    }
+
+    @GetMapping("/filterFinished")
+    public String findAllFinished(Model model){
+        List<Task> taskList = taskService.getAllFinished();
+        List<TaskShortDTO> dtoList = taskList.stream()
+                .map(TaskShortDTO::fromEntity)
+                .toList();
+        model.addAttribute("taskFinishedList", dtoList);
+        return "task/filterFinished";
     }
 }

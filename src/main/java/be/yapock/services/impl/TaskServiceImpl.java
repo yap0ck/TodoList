@@ -56,7 +56,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getAllFinished() {
+    public List<Task> getAllUnfinished() {
         return taskRepository.findByIsFinishedFalse();
+    }
+
+    @Override
+    public List<Task> getAllFinished() {
+        return taskRepository.findByIsFinishedTrue();
     }
 }
