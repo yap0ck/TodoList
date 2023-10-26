@@ -13,4 +13,5 @@ public interface TaskService {
 
     Task upDateFinishedStatus(Long id);
 
+    List<Task> getAllFinished();
 }

@@ -46,4 +46,14 @@ public class TaskController {
         taskService.upDateFinishedStatus(id);
         return "redirect:/task";
     }
+
+    @GetMapping("/filterUnfinished")
+    public String findAllFinished(Model model){
+        List<Task> taskList = taskService.getAllFinished();
+        List<TaskShortDTO> dtoList = taskList.stream()
+                .map(TaskShortDTO::fromEntity)
+                .toList();
+        model.addAttribute("taskUnfinishedList", dtoList);
+        return "task/filterUnfinished";
+    }
 }

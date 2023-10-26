@@ -5,6 +5,7 @@ import be.yapock.repositories.TaskRepository;
 import be.yapock.services.TaskService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -16,6 +17,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task create(Task task) {
+        task.setDateStarted(LocalDate.now());
         return taskRepository.save(task);
     }
 
@@ -49,6 +51,12 @@ public class TaskServiceImpl implements TaskService {
     public Task upDateFinishedStatus(Long id) {
         Task existingTask = getOne(id);
         existingTask.setFinished(true);
+        existingTask.setDateFinished(LocalDate.now());
         return taskRepository.save(existingTask);
+    }
+
+    @Override
+    public List<Task> getAllFinished() {
+        return taskRepository.findByIsFinishedFalse();
     }
 }

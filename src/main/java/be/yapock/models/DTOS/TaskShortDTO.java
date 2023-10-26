@@ -1,7 +1,6 @@
 package be.yapock.models.DTOS;
 
 import be.yapock.models.entities.Task;
-import be.yapock.models.forms.TaskForm;
 import lombok.Data;
 
 @Data

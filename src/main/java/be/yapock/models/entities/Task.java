@@ -1,8 +1,9 @@
 package be.yapock.models.entities;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -15,4 +16,6 @@ public class Task {
 
     private String description;
     private boolean isFinished;
+    private LocalDate dateStarted;
+    private LocalDate dateFinished;
 }
