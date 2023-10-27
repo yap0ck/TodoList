@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport">
+    <title>acceuil</title>
+    <link rel="stylesheet" href="/CSS/taskStyle.css">
+</head>
+<body>
+<div class="banner">
+    <h1>To-do List</h1>
+</div>
+<table class="table zebre">
+    <thead>
+    <tr>
+        <th><a href="/task">#</a></th>
+        <th><a href="/task/filterNoneOrderByTitleDesc">Titre</a></th>
+        <th>Terminée?</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:class="${task.finished} ? 'finished' : 'unfinished'" th:each="task : ${orderByIdDesc}" >
+        <td th:text="${task.id}"/>
+        <td th:text="${task.title}"/>
+        <td th:text="${task.finished}"/>
+        <td>
+            <a th:if="${not task.finished}" th:href="@{/task/finished/{id}(id = ${task.id})}">Finie</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="menu">
+    <a th:href="@{/task/filterUnfinished}" class="custom-btn">Afficher les tâches non terminées</a>
+    <a th:href="@{/task/filterFinished}" class="custom-btn">Afficher les tâches terminées</a>
+    <a th:href="@{/task/deleteAllFinished}" class="custom-btn">Effacer les tâches supprimées</a>
+    <a th:href="@{/task/create}" class="custom-btn">Ajouter une tâche</a>
+</div>
+</body>
+</html>

@@ -72,4 +72,44 @@ public class TaskController {
         taskService.deleteAllFinished();
         return "redirect:/task";
     }
+
+    @GetMapping("/filterNoneOrderByIdDesc")
+    public String orderByIdDesc(Model model){
+        List<Task> taskList = taskService.getAllByIdDesc();
+        List<TaskShortDTO> dtoList = taskList.stream()
+                .map(TaskShortDTO::fromEntity)
+                .toList();
+        model.addAttribute("orderByIdDesc", dtoList);
+        return "task/filterNoneOrderByIdDesc";
+    }
+
+    @GetMapping("/filterNoneOrderByTitleAsc")
+    public String AllOrderByTitleAsc(Model model){
+        List<Task> taskList = taskService.getAllByTitleAsc();
+        List<TaskShortDTO> dtoList = taskList.stream()
+                .map(TaskShortDTO::fromEntity)
+                .toList();
+        model.addAttribute("allOrderByTitleAsc", dtoList);
+        return "task/filterNoneOrderByTitleAsc";
+    }
+
+    @GetMapping("/filterNoneOrderByTitleDesc")
+    public String AllOrderByTitleDesc(Model model){
+        List<Task> taskList = taskService.getAllByTitleDesc();
+        List<TaskShortDTO> dtoList = taskList.stream()
+                .map(TaskShortDTO::fromEntity)
+                .toList();
+        model.addAttribute("allOrderByTitleDesc", dtoList);
+        return "task/filterNoneOrderByTitleDesc";
+    }
+
+    @GetMapping("/filterNoneOrderByFinishedAsc")
+    public String AllOrderByFinishedAsc(Model model){
+        List<Task> taskList = taskService.getAllByFinishedAsc();
+        List<TaskShortDTO> dtoList = taskList.stream()
+                .map(TaskShortDTO::fromEntity)
+                .toList();
+        model.addAttribute("allOrderByFinishedAsc", dtoList);
+        return "task/filterNoneOrderByFinishedAsc";
+    }
 }

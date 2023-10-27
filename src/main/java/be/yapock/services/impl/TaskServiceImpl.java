@@ -4,6 +4,7 @@ import be.yapock.models.entities.Task;
 import be.yapock.repositories.TaskRepository;
 import be.yapock.services.TaskService;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -29,7 +30,27 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> getAll() {
-        return taskRepository.findAll();
+        return taskRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+    }
+
+    @Override
+    public List<Task> getAllByIdDesc() {
+        return taskRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));
+    }
+
+    @Override
+    public List<Task> getAllByTitleAsc() {
+        return taskRepository.findAll(Sort.by(Sort.Direction.ASC,"title"));
+    }
+
+    @Override
+    public List<Task> getAllByTitleDesc() {
+        return taskRepository.findAll(Sort.by(Sort.Direction.DESC,"title"));
+    }
+
+    @Override
+    public List<Task> getAllByFinishedAsc() {
+        return taskRepository.findAll(Sort.by(Sort.Direction.ASC,"is_finished"));
     }
 
     @Override

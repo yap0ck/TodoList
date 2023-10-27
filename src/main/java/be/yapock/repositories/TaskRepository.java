@@ -14,4 +14,5 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     List<Task> findByIsFinishedTrue();
 
     List<Task> deleteTaskByIsFinishedTrue();
+
 }
