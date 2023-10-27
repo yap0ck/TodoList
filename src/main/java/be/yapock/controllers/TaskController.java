@@ -4,8 +4,10 @@ import be.yapock.models.DTOS.TaskShortDTO;
 import be.yapock.models.entities.Task;
 import be.yapock.models.forms.TaskForm;
 import be.yapock.services.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +28,10 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-    public String postCreate(@ModelAttribute TaskForm form){
+    public String postCreate(@ModelAttribute("task") @Valid TaskForm form, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "task/create";
+        }
         taskService.create(form.toEntity());
         return "redirect:/task";
     }

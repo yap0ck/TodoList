@@ -14,7 +14,8 @@
     <tr>
         <th><a href="/task">#</a></th>
         <th><a href="/task/filterNoneOrderByTitleDesc">Titre</a></th>
-        <th>Terminée?</th>
+        <th>date début</th>
+        <th>date de fin</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -22,7 +23,8 @@
     <tr th:class="${task.finished} ? 'finished' : 'unfinished'" th:each="task : ${orderByIdDesc}" >
         <td th:text="${task.id}"/>
         <td th:text="${task.title}"/>
-        <td th:text="${task.finished}"/>
+        <td th:text="${task.dateStarted}"></td>
+        <td th:text="${task.dateFinished}"></td>
         <td>
             <a th:if="${not task.finished}" th:href="@{/task/finished/{id}(id = ${task.id})}">Finie</a>
         </td>
