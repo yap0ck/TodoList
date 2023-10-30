@@ -1,5 +1,6 @@
 package be.yapock.models.DTOS;
 
+import be.yapock.models.entities.Category;
 import be.yapock.models.entities.Task;
 import lombok.Data;
 
@@ -12,6 +13,7 @@ public class TaskShortDTO {
     private boolean isFinished;
     private LocalDate dateStarted;
     private LocalDate dateFinished;
+    private String category;
 
     public static TaskShortDTO fromEntity(Task task){
         TaskShortDTO taskShortDTO = new TaskShortDTO();
@@ -20,6 +22,7 @@ public class TaskShortDTO {
         taskShortDTO.setFinished(task.isFinished());
         taskShortDTO.setDateStarted(task.getDateStarted());
         taskShortDTO.setDateFinished(task.getDateFinished());
+        taskShortDTO.setCategory(task.getCategory().getName());
         return taskShortDTO;
     }
 }

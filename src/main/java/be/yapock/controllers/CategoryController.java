@@ -1,6 +1,7 @@
 package be.yapock.controllers;
 
 import be.yapock.models.DTOS.User_DtoFirstNameLastName;
+import be.yapock.models.entities.Category;
 import be.yapock.models.entities.User_;
 import be.yapock.models.forms.CategoryForm;
 import be.yapock.services.CategoryService;
@@ -42,7 +43,9 @@ public class CategoryController {
     @PostMapping("/create")
     public String postCreate(@ModelAttribute("category") @Valid CategoryForm form, BindingResult bindingResult){
         if (bindingResult.hasErrors()) return "category/create";
-        categoryService.create(form.toEntity());
-        return "redirect:index";
+        Category category = form.toEntity();
+        category.setUser(userService.getOne(form.getId()));
+        categoryService.create(category);
+        return "redirect:/";
     }
 }

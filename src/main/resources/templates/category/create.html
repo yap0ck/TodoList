@@ -18,8 +18,8 @@
             <label>Nom</label>
         </div>
         <div class="group">
-            <select name="user">
-                <option th:each="user : ${userList}" th:value="${user}" th:text="${user.firstName + ' ' + user.lastName}"></option>
+            <select th:field="*{id}">
+                <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.firstName + ' ' + user.lastName}"></option>
             </select>
             <span class="highlight"></span>
             <span class="bar"></span>

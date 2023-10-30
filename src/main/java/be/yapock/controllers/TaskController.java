@@ -1,8 +1,11 @@
 package be.yapock.controllers;
 
+import be.yapock.models.DTOS.CategoryDtoIdName;
 import be.yapock.models.DTOS.TaskShortDTO;
+import be.yapock.models.entities.Category;
 import be.yapock.models.entities.Task;
 import be.yapock.models.forms.TaskForm;
+import be.yapock.services.CategoryService;
 import be.yapock.services.TaskService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -16,14 +19,21 @@ import java.util.List;
 @RequestMapping("/task")
 public class TaskController {
     private final TaskService taskService;
+    private final CategoryService categoryService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, CategoryService categoryService) {
         this.taskService = taskService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/create")
     public String getCreate(Model model){
         model.addAttribute("task", new TaskForm());
+        List<Category> categories = categoryService.getAll();
+        List<CategoryDtoIdName> categoryDtos = categories.stream()
+                .map(CategoryDtoIdName::fromEntity)
+                .toList();
+        model.addAttribute("categories", categoryDtos);
         return "task/create";
     }
 
@@ -32,7 +42,9 @@ public class TaskController {
         if (bindingResult.hasErrors()){
             return "task/create";
         }
-        taskService.create(form.toEntity());
+        Task task = form.toEntity();
+        task.setCategory(categoryService.getOne(form.getCategoryId()));
+        taskService.create(task);
         return "redirect:/task";
     }
 

@@ -6,6 +6,7 @@ import be.yapock.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -23,5 +24,10 @@ public class UserServiceImpl implements UserService {
 
     public List<User_> getAll(){
         return userRepository.findAll();
+    }
+
+    @Override
+    public User_ getOne(Long id) {
+        return userRepository.findById(id).orElseThrow();
     }
 }

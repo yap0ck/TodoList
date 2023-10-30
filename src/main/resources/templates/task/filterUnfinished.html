@@ -14,6 +14,7 @@
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
+                <th>Catégorie</th>
                 <th>date début</th>
                 <th>Action</th>
             </tr>
@@ -22,6 +23,7 @@
             <tr th:each="task : ${taskUnfinishedList}" class="unfinished">
                 <td th:text="${task.id}"/>
                 <td th:text="${task.title}"/>
+                <td th:text="${task.category}"></td>
                 <td th:text="${task.dateStarted}"></td>
                 <td>
                     <a th:href="@{/task/finished/{id}(id = ${task.id})}">Finie</a>

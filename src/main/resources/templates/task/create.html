@@ -24,6 +24,11 @@
             <span th:if="${#fields.hasErrors('description')}" th:errors="${task.description}" style="color: red"></span>
             <label>Description</label>
         </div>
+        <div class="group">
+            <select th:field="*{categoryId}">
+                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+            </select>
+        </div>
         <div id="conteneurBtn">
             <button type="submit" class="custom-btn" id="submit">Ajouter</button>
         </div>

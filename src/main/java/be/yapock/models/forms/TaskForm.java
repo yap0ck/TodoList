@@ -13,6 +13,7 @@ public class TaskForm {
     @NotBlank
     private String description;
     private boolean isFinished = false;
+    private Long categoryId;
 
 
     public Task toEntity(){

@@ -14,6 +14,7 @@
   <tr>
     <th><a href="/task">#</a></th>
     <th><a href="/task/filterNoneOrderByTitleAsc">Titre</a></th>
+    <th>Catégorie</th>
     <th>date début</th>
     <th>date de fin</th>
     <th>Action</th>
@@ -23,6 +24,7 @@
   <tr th:class="${task.finished} ? 'finished' : 'unfinished'" th:each="task : ${allOrderByTitleDesc}" >
     <td th:text="${task.id}"/>
     <td th:text="${task.title}"/>
+    <td th:text="${task.category}"></td>
     <td th:text="${task.dateStarted}"></td>
     <td th:text="${task.dateFinished}"></td>
     <td>

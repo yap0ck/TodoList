@@ -32,6 +32,6 @@ public class UserController {
             return "user/registration";
         }
         userService.create(form.toEntity());
-        return "redirect:/user";
+        return "redirect:/";
     }
 }
