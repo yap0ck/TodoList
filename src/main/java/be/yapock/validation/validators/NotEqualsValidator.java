@@ -9,11 +9,11 @@ public class NotEqualsValidator implements ConstraintValidator<NotEquals, String
 
     @Override
     public void initialize(NotEquals constraintAnnotation){
-        notEqualValue = constraintAnnotation.value();
+        notEqualValue = constraintAnnotation.value(); // Récupère la valeur à laquelle le champ ne doit pas être égal.
     }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context){
-        return !value.equals(notEqualValue);
+        return !value.equals(notEqualValue); // Valide la valeur du champ : renvoie true si la valeur n'est pas égale à la valeur spécifiée.
     }
 }

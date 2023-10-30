@@ -14,20 +14,20 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class Task {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // Identifiant unique de la tâche
 
     @Column(nullable = false)
-    private String title;
+    private String title; // Titre de la tâche, obligatoire
 
-    private String description;
-    private boolean isFinished;
-    private LocalDate dateStarted;
-    private LocalDate dateFinished;
+    private String description; // Description de la tâche
+    private boolean isFinished; // Statut de la tâche (terminée ou non)
+    private LocalDate dateStarted; // Date de début de la tâche
+    private LocalDate dateFinished; // Date de fin de la tâche
 
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category;
+    private Category category; // Catégorie à laquelle la tâche est associée
 
     @Override
     public final boolean equals(Object o) {

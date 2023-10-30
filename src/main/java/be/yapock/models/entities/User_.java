@@ -15,18 +15,17 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class User_ {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // Identifiant unique de l'utilisateur
     @JoinColumn(referencedColumnName = "firstName", unique = true) @Column(nullable = false)
-    private String lastName;
+    private String lastName; // Nom de famille de l'utilisateur
     @Column(nullable = false)
-    private String firstName;
+    private String firstName; // Prénom de l'utilisateur
     @Column(unique = true, nullable = false)
-    private String login;
+    private String login; // Nom d'utilisateur unique
     @Column(nullable = false)
-
-    private String password;
+    private String password; // Mot de passe de l'utilisateur
     @Column(nullable = false)
-    private LocalDate dateOfBirth;
+    private LocalDate dateOfBirth; // Date de naissance de l'utilisateur
 
     @Override
     public final boolean equals(Object o) {
