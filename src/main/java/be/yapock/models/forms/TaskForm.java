@@ -14,13 +14,6 @@ public class TaskForm {
     private String description;
     private boolean isFinished = false;
 
-    public static TaskForm fromEntity(Task task){
-        TaskForm taskForm = new TaskForm();
-        taskForm.setTitle(task.getTitle());
-        taskForm.setDescription(task.getDescription());
-        taskForm.setFinished(task.isFinished());
-        return taskForm;
-    }
 
     public Task toEntity(){
         Task task = new Task();

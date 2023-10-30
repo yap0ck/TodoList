@@ -1,6 +1,7 @@
 package be.yapock.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -12,22 +13,20 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Task {
+public class User_ {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @JoinColumn(referencedColumnName = "firstName", unique = true) @Column(nullable = false)
+    private String lastName;
     @Column(nullable = false)
-    private String title;
+    private String firstName;
+    @Column(unique = true, nullable = false)
+    private String login;
+    @Column(nullable = false)
 
-    private String description;
-    private boolean isFinished;
-    private LocalDate dateStarted;
-    private LocalDate dateFinished;
-
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private String password;
+    @Column(nullable = false)
+    private LocalDate dateOfBirth;
 
     @Override
     public final boolean equals(Object o) {
@@ -36,8 +35,8 @@ public class Task {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Task task = (Task) o;
-        return getId() != null && Objects.equals(getId(), task.getId());
+        User_ user = (User_) o;
+        return getId() != null && Objects.equals(getId(), user.getId());
     }
 
     @Override

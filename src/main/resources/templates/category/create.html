@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Creation de categorie</title>
+    <link rel="stylesheet" href="/CSS/taskStyle.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Nouvelle catégorie</h1>
+    </div>
+    <form th:object="${category}" th:action="@{/category/create}" method="post">
+        <div class="group">
+            <input type="text" th:field="*{name}"/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="${category.name}" style="color: red"></span>
+            <label>Nom</label>
+        </div>
+        <div class="group">
+            <select name="user">
+                <option th:each="user : ${userList}" th:value="${user}" th:text="${user.firstName + ' ' + user.lastName}"></option>
+            </select>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Utilisateur</label>
+        </div>
+        <div id="conteneurBtn">
+            <button type="submit" class="custom-btn" id="submit">Ajouter</button>
+        </div>
+    </form>
+</body>
+</html>

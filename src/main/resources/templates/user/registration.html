@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/CSS/taskStyle.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Enregistrement</h1>
+    </div>
+    <form th:object="${user}" th:action="@{/user/registration}" method="post">
+        <div class="group">
+            <input type="text" th:field="*{firstName}"/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="${user.firstName}" style="color: red"></span>
+            <label>Prénom</label>
+        </div>
+        <div class="group">
+            <input type="text" th:field="*{lastName}"/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="${user.lastName}" style="color: red"></span>
+            <label>Nom</label>
+        </div>
+        <div class="group">
+            <input type="text" th:field="*{login}"/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span th:if="${#fields.hasErrors('login')}" th:errors="${user.login}" style="color: red"></span>
+            <label>Nom d'utilisateur</label>
+        </div>
+        <div class="group">
+            <input type="password" th:field="*{password}"/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="${user.password}" style="color: red"></span>
+            <label>Mot de passe</label>
+        </div>
+        <div class="group">
+            <input type="date" th:field="*{dateOfBirth}"/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="${user.dateOfBirth}" style="color: red"></span>
+            <label>Prénom</label>
+        </div>
+        <div id="conteneurBtn">
+            <button type="submit" class="custom-btn" id="submit">Ajouter</button>
+        </div>
+    </form>
+</body>
+</html>
