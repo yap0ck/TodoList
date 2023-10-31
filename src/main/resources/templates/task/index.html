@@ -26,6 +26,7 @@
                 <td th:text="${task.dateStarted}"></td>
                 <td th:text="${task.dateFinished}"></td>
                 <td>
+                    <a th:href="@{/task/{id}(id = ${task.id})}">Détail</a>
                     <a th:if="${not task.finished}" th:href="@{/task/finished/{id}(id = ${task.id})}">Finie</a>
                 </td>
             </tr>

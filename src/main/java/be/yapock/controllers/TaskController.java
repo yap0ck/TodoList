@@ -1,6 +1,7 @@
 package be.yapock.controllers;
 
 import be.yapock.models.DTOS.CategoryDtoIdName;
+import be.yapock.models.DTOS.TaskDtoFull;
 import be.yapock.models.DTOS.TaskShortDTO;
 import be.yapock.models.entities.Category;
 import be.yapock.models.entities.Task;
@@ -183,5 +184,13 @@ public class TaskController {
 
         // Retourne le nom de la vue qui affichera la liste triée
         return "task/filterNoneOrderByTitleDesc";
+    }
+
+    @GetMapping("/{id}")
+    public String detailTask(@PathVariable Long id, Model model){
+        Task task = taskService.getOne(id);
+        TaskDtoFull dtoFull = TaskDtoFull.fromEntity(task);
+        model.addAttribute("tache", dtoFull);
+        return "task/detail";
     }
 }
