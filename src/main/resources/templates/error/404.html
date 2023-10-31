@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Erreur 404</title>
+    <th:block th:replace="~{fragments/fragments :: CSS}"></th:block>
+</head>
+<body>
+    <th:block th:replace="~{fragments/fragments :: header}"></th:block>
+
+    <div class="content">
+        <div class="error-message">404 Error - Page Not Found</div>
+        <div th:if="${exception}"><p th:text="${exception.message}"></p> </div>
+        <div class="error-description">
+
+        </div>
+    </div>
+<a href="/">Go to Home</a>
+</body>
+</html>

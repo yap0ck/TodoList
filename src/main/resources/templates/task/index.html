@@ -2,14 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" name="viewport">
-    <title>acceuil</title>
-<link rel="stylesheet" href="/CSS/taskStyle.css">
+    <title>liste de tache</title>
+    <th:block th:replace="~{fragments/fragments :: CSS}"></th:block>
 </head>
 <body>
-    <div class="banner">
-        <h1>To-do List</h1>
-    </div>
-    <table class="table zebre">
+    <th:block th:replace="~{fragments/fragments :: header}"></th:block>
+    <table class="table">
         <thead>
             <tr>
                 <th><a href="/task/filterNoneOrderByIdDesc">#</a></th>
@@ -33,7 +31,7 @@
             </tr>
         </tbody>
     </table>
-    <div class="menu">
+    <div class="conteneurBtn">
         <a th:href="@{/task/filterUnfinished}" class="custom-btn">Afficher les tâches non terminées</a>
         <a th:href="@{/task/filterFinished}" class="custom-btn">Afficher les tâches terminées</a>
         <a th:href="@{/task/deleteAllFinished}" class="custom-btn">Effacer les tâches supprimées</a>

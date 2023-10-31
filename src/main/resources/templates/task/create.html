@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajout d'une Tache</title>
-    <link rel="stylesheet" href="/CSS/taskStyle.css">
+<th:block th:replace="~{fragments/fragments :: CSS}"></th:block>
+    <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
 </head>
 <body>
-    <div class="banner">
-        <h1>Ajout d'une Tache</h1>
-    </div>
+<th:block th:replace="~{fragments/fragments :: header}"></th:block>
     <form th:object="${task}" th:action="@{/task/create}" method="post">
         <div class="group">
-            <input type="text" th:field="*{title}" required/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <label for="title">Titre</label>
+            <input type="text" th:field="*{title}" required id="title"/>
             <span th:if="${#fields.hasErrors('title')}" th:errors="${task.title}" style="color: red"></span>
-            <label>Titre</label>
         </div>
         <div class="group">
-            <input type="text" th:field="*{description}"/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <label for="description">Description</label>
+            <textarea th:field="*{description}" id="description"></textarea>
             <span th:if="${#fields.hasErrors('description')}" th:errors="${task.description}" style="color: red"></span>
-            <label>Description</label>
         </div>
-        <div class="group">
-            <select th:field="*{categoryId}">
+        <div class="styled-select blue semi-square ">
+            <label for="category">Catégorie</label>
+            <select th:field="*{categoryId}" id="category">
                 <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
             </select>
         </div>

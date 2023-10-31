@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>taches terminées</title>
-    <link rel="stylesheet" href="/CSS/taskStyle.css">
+    <th:block th:replace="~{fragments/fragments :: CSS}"></th:block>
 </head>
 <body>
-    <div class="banner">
-        <h1>Tâches terminées</h1>
-    </div>
+    <th:block th:replace="~{fragments/fragments :: header}"></th:block>
     <table class="table zebre">
         <thead>
             <tr>
@@ -33,7 +31,7 @@
             </tr>
         </tbody>
     </table>
-    <div class="menu">
+    <div class="conteneurBtn">
         <a th:href="@{/task}" class="custom-btn">Afficher toute les taches</a>
         <a th:href="@{/task/filterUnfinished}" class="custom-btn">Afficher les tâches non terminées</a>
         <a th:href="@{/task/deleteAllFinished}" class="custom-btn">Effacer les tâches supprimées</a>

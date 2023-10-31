@@ -3,47 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
-    <link rel="stylesheet" href="/CSS/taskStyle.css">
+    <th:block th:replace="~{fragments/fragments :: CSS}"></th:block>
 </head>
 <body>
-    <div class="banner">
-        <h1>Enregistrement</h1>
-    </div>
+<th:block th:replace="~{fragments/fragments :: header}"></th:block>
     <form th:object="${user}" th:action="@{/user/registration}" method="post">
         <div class="group">
-            <input type="text" th:field="*{firstName}"/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <label for="firstName">Prénom :</label>
+            <input type="text" th:field="*{firstName}" id="firstName"/>
             <span th:if="${#fields.hasErrors('firstName')}" th:errors="${user.firstName}" style="color: red"></span>
-            <label>Prénom</label>
         </div>
         <div class="group">
-            <input type="text" th:field="*{lastName}"/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <label for="lastName">Nom :</label>
+            <input type="text" th:field="*{lastName}" id="lastName"/>
             <span th:if="${#fields.hasErrors('lastName')}" th:errors="${user.lastName}" style="color: red"></span>
-            <label>Nom</label>
         </div>
         <div class="group">
-            <input type="text" th:field="*{login}"/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <label for="login">Nom d'utilisateur :</label>
+            <input type="text" th:field="*{login}" id="login"/>
             <span th:if="${#fields.hasErrors('login')}" th:errors="${user.login}" style="color: red"></span>
-            <label>Nom d'utilisateur</label>
+
         </div>
         <div class="group">
-            <input type="password" th:field="*{password}"/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <label for="password">Mot de passe :</label>
+            <input type="password" th:field="*{password}" id="password"/>
             <span th:if="${#fields.hasErrors('password')}" th:errors="${user.password}" style="color: red"></span>
-            <label>Mot de passe</label>
+
         </div>
         <div class="group">
-            <input type="date" th:field="*{dateOfBirth}"/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <label for="dob">Date de naissance : </label>
+            <input type="date" th:field="*{dateOfBirth}" id="dob"/>
             <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="${user.dateOfBirth}" style="color: red"></span>
-            <label>Prénom</label>
+
         </div>
         <div id="conteneurBtn">
             <button type="submit" class="custom-btn" id="submit">Ajouter</button>
