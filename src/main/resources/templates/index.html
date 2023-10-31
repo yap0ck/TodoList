@@ -5,67 +5,105 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="/CSS/neumorphic.css">
+    <link rel="stylesheet" href="/CSS/nixieTubeClock.css">
 <th:block th:replace="~{fragments/fragments :: CSS}"></th:block>
 </head>
 <body>
 <th:block th:replace="~{fragments/fragments :: header}"></th:block>
 
     <div id="watch">
-        <div class="frame-face"></div>
-        <ul class="minute-marks">
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li>
-        </ul>
-        <div class="digital-wrap">
-            <ul class="digit-hours">
-                <li>23</li>
-                <li>00</li><li>01</li><li>02</li><li>03</li><li>04</li><li>05</li>
-                <li>06</li><li>07</li><li>08</li><li>09</li><li>10</li><li>11</li>
-                <li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li>
-                <li>18</li><li>19</li><li>20</li><li>21</li><li>22</li>
-            </ul>
-            <ul class="digit-minutes">
-                <li>10</li><li>11</li>
-                <li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li>
-                <li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li>
-                <li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li>
-                <li>30</li><li>31</li><li>32</li><li>33</li><li>34</li><li>35</li>
-                <li>36</li><li>37</li><li>38</li><li>39</li><li>40</li><li>41</li>
-                <li>42</li><li>43</li><li>44</li><li>45</li><li>46</li><li>47</li>
-                <li>48</li><li>49</li><li>50</li><li>51</li><li>52</li><li>53</li>
-                <li>54</li><li>55</li><li>56</li><li>57</li><li>58</li><li>59</li>
-                <li>00</li><li>01</li><li>02</li><li>03</li><li>04</li><li>05</li>
-                <li>06</li><li>07</li><li>08</li><li>09</li>
-            </ul>
-            <ul class="digit-seconds">
-                <li>20</li><li>21</li><li>22</li><li>23</li>
-                <li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li>
-                <li>30</li><li>31</li><li>32</li><li>33</li><li>34</li><li>35</li>
-                <li>36</li><li>37</li><li>38</li><li>39</li><li>40</li><li>41</li>
-                <li>42</li><li>43</li><li>44</li><li>45</li><li>46</li><li>47</li>
-                <li>48</li><li>49</li><li>50</li><li>51</li><li>52</li><li>53</li>
-                <li>54</li><li>55</li><li>56</li><li>57</li><li>58</li><li>59</li>
-                <li>00</li><li>01</li><li>02</li><li>03</li><li>04</li><li>05</li>
-                <li>06</li><li>07</li><li>08</li><li>09</li><li>10</li><li>11</li>
-                <li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li>
-                <li>18</li><li>19</li>
-            </ul>
-        </div>
-        <ul class="digits">
-            <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li>
-            <li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li>
-        </ul>
-        <div class="hours-hand"></div>
-        <div class="minutes-hand"></div>
-        <div class="seconds-hand"></div>
-    </div>
+        <svg id="noise-svg">
+            <!-- gives background a bit of texture -->
+            <filter id='noiseFilter'>
+                <feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch' />
+            </filter>
+            <rect id="noise-rect" filter='url(#noiseFilter)' />
+        </svg>
 
-<script src="/Script/clock.js"></script>
+        <div class="clock off">
+            <div class="shadow"></div>
+
+            <div class="base-container"><div class="base"><div></div></div></div>
+            <div class="small-outer-pipe">
+                <div class="small-inner-pipe"></div>
+            </div>
+            <div class="outer-pipe">
+                <div class="inner-pipe"></div>
+            </div>
+            <div class="pipe-accents">
+                <div class="top-tube"></div>
+                <div class="tube-holders">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="top"></div>
+                <div class="topinset"></div>
+                <div class="left"><div></div><div></div><div></div></div>
+                <div class="right"><div></div><div></div><div></div></div>
+                <div class="bottom-left"></div>
+                <div class="bottom-right"></div>
+            </div>
+
+            <div class="display">
+                <div class="row">
+                    <div class="col"><div>8</div><div id="char01">0</div><div id="char02">0</div></div>
+                    <div class="col"><div>8</div><div id="char11">0</div><div id="char12">0</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><div>8</div><div id="char21">0</div><div id="char22">0</div></div>
+                    <div class="col"><div>8</div><div id="char31">0</div><div id="char32">0</div></div>
+                </div>
+                <div style="height: 0.2em;"></div>
+                <div class="small-row">
+                    <div class="row">
+                        <div class="col"><div>8</div><div id="char41">0</div><div id="char42">0</div></div>
+                        <div class="col"><div>8</div><div id="char51">0</div><div id="char52">0</div></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><div>8</div><div id="char61">0</div><div id="char62">0</div></div>
+                    <div class="col"><div>8</div><div id="char71">0</div><div id="char72">0</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><div>8</div><div id="char81">0</div><div id="char82">0</div></div>
+                    <div class="col"><div>8</div><div id="char91">0</div><div id="char92">0</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><div>8</div><div id="char101">0</div><div id="char102">0</div></div>
+                    <div class="col"><div>8</div><div id="char111">0</div><div id="char112">0</div></div>
+                </div>
+            </div>
+
+            <div class="glass-tube"></div>
+            <div class="hex">
+                <div class="overlay"></div>
+            </div>
+
+            <div class="tube-base-container">
+                <div class="wires"><div></div><div></div></div>
+                <div class="tube-base"></div>
+                <div class="rods">
+                    <div class="left-rod"></div>
+                    <div class="center-rod"></div>
+                    <div class="right-rod"></div>
+                </div>
+                <div class="tube-btm"></div>
+            </div>
+
+            <div class="power-cord">
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="button" onclick="body.querySelector('.clock').classList.toggle('off')">
+                <div></div>
+            </div>
+        </div>
+    </div>
+<script src="/Script/nixieTubeClock.js"></script>
 </body>
 </html>
